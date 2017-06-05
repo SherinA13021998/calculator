@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+
+<div id="box">
+    <div id="row">
+
+    </div>
+
+    <button onclick="getNum('1')" >1</button>
+    <button onclick="getNum('2')" >2</button>
+    <button onclick="getNum('3')" >3</button>
+    <button onclick="getOp('+')" >+</button>
+    <br>
+    <button onclick="getNum('4')" >4</button>
+    <button onclick="getNum('5')" >5</button>
+    <button onclick="getNum('6')" >6</button>
+    <button onclick="getOp('*')">*</button>
+    <br>
+    <button onclick="getNum('7')" >7</button>
+    <button onclick="getNum('8')" >8</button>
+    <button onclick="getNum('9')" >9</button>
+    <button onclick="getOp('/')">/</button>
+    <br>
+    <button onclick="getNum('0')" >0</button>
+    <button onclick="getOp('-')">-</button>
+    <button onclick="result()">=</button>
+
+</div>
+<style>
+ #box
+    { width:150px;
+      height:150px;
+      border:1px solid black;
+      }
+      #row
+      {width:150px;
+       height:45px;
+       border:1px solid black;
+
+       }
+    </style>
+
+<script>
+    var num1="";
+    var num2="";
+    var operation="";
+
+    function display(str){
+    document.getElementById("row").innerHTML=str;
+    }
+
+    function getNum(a){
+    if(operation==="")
+    {num1=num1+a;
+      display(num1);
+      }
+    else
+    {num2=num2+a;
+     display(num1 + operation+ num2);
+     }
+
+    }
+
+    function getOp(b){
+    operation=b;
+    display(num1+operation);
+    }
+
+    function result(){
+    var x=parseInt(num1);
+    var y=parseInt(num2);
+    var z;
+
+    if(operation==='+')
+      {z=x+y;
+       display(z);}
+    else if(operation==='-')
+      {z=x-y;
+       display(z);}
+    else if(operation==='*')
+        {z=x*y;
+        display(z);}
+    else if(operation==='/')
+          { if(y!==0)
+             {z=x/y;
+             display(z);}
+          else
+             {display("error,cannot divide by zero");}
+          }
+          num1=z;
+          num2="";
+     }
+</script>
+</body>
+</html>
